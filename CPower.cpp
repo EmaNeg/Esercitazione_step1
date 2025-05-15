@@ -13,13 +13,12 @@ Power::Power() {
 }
 
 /// @brief Constructor of Power class
-/// @details This constructor creates a power function with the coefficients given in the array.
+/// @details This constructor creates a power function with the coefficients given.
 ///	@param k coefficient of the power function
 ///	@param e exponent of the power function
 Power::Power(double k, double e) {
     cout << "Power constructor" << endl;
-    k_coeff = k;
-    e_coeff = e;
+    SetPower(k, e);
 }
 
 /// @brief Copy Constructor of Power class
