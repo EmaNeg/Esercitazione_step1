@@ -47,7 +47,7 @@ Polynomial::Polynomial(const Polynomial& p) {
 		exit(-1);
 	}
 	degree = p.degree;
-	coeff = new double[degree + 1];
+	coeff = new double[static_cast<size_t>(degree + 1)];
 	if (coeff == NULL) {
 		ErrorMessage("Copy constructor: cannot allocate memory");
 		exit(-1);
@@ -59,7 +59,7 @@ Polynomial::Polynomial(const Polynomial& p) {
 
 
 /// @brief Overload Operator =
-/// @details This operator copies the coefficients of the polynomial p into the current object through the copy constructor.
+/// @details This operator copies the coefficients of the polynomial p into the current object.
 ///	@param p the polynomial to be copied
 Polynomial& Polynomial::operator=(const Polynomial& p) {
     
@@ -69,7 +69,7 @@ Polynomial& Polynomial::operator=(const Polynomial& p) {
 		if (coeff != NULL)
 			delete coeff;
         degree = p.degree;
-        coeff = new double[degree + 1];
+        coeff = new double[static_cast<size_t>(degree + 1)];
 		if (coeff == NULL) {
 			ErrorMessage("Operator =: cannot allocate memory");
 			exit(-1);
@@ -115,7 +115,7 @@ void Polynomial::SetPolynomial(const double* coefficients, int size) {
 		Reset();
 	
 	degree = size - 1;
-    coeff = new double[size];
+    coeff = new double[static_cast<size_t>(size)];
 	if (coeff == NULL) {
 		ErrorMessage("SetPolynomial: cannot allocate memory");
 		exit(-1);

@@ -3,7 +3,7 @@
     @author Emanuele Negrino and Carlo Toscano
 */
 
-#include <cmath>
+#include <math.h>
 #include "CLogarithmic.h"
 
 /// @brief Default Constructor of Power class
@@ -60,8 +60,8 @@ bool Logarithmic::operator==(const Logarithmic& l) {
 ///	@param b exponent of the Logarithmic function
 void Logarithmic::SetLogarithmic(double k, double b) {
 
-    if(b<=0){
-        ErrorMessage("The base must be >0");
+    if(b<=0 && b != -1){
+        ErrorMessage("The base must be >0 and not equal to 1");
         exit(-1);
     }
     k_coeff = k;
@@ -72,7 +72,11 @@ void Logarithmic::SetLogarithmic(double k, double b) {
 ///	@param in the input, "x" in the function
 ///	@return the value of the function
 double Logarithmic::GetValue(double in) const {
-    return k_coeff * log(in) / log(b_coeff);
+    if(in <= 0){
+        cout << "The logarithm is not defined for x <= 0" << endl;
+        exit(-1);
+    }
+    return k_coeff * (log(in) / log(b_coeff));
 }
 
 /// @brief Error message function
@@ -96,6 +100,6 @@ void Logarithmic::Dump() {
     }
     else
     {
-    cout << "Logarithmic function: " << k_coeff << "*log_" << b_coeff << " x" << endl << endl;
+        cout << "Logarithmic function: " << k_coeff << "*log_" << b_coeff << " (x)" << endl << endl;
     }
 }

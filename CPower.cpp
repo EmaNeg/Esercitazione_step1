@@ -53,19 +53,38 @@ bool Power::operator==(const Power& p) {
     return (k_coeff == p.k_coeff && e_coeff == p.e_coeff);
 }
 
+/// @brief Check if the exponent is between -1 and 1, transforming the function in a sqrt
+/// @param e the exponent
+/// @return False if exponent is between -1 and 1, otherways true
+bool controlExponent(double e) {
+    if(e < 1 && e > -1){
+        return false;
+    }
+    return true;
+}
+
 /// @brief Sets the coefficients of the power function
 ///	@param k coefficient of the power function
 ///	@param e exponent of the power function
 void Power::SetPower(double k, double e) {
     k_coeff = k;
     e_coeff = e;
+    if(controlExponent(e)) {
+        WarningMessage("Your function become a square root, so x < 0 doesn't exists");
+    }
 }
 
 /// @brief Returns the value of the function, given an input
 ///	@param in the input, "x" in the function
 ///	@return the value of the function
 double Power::GetValue(double in) const {
-    return k_coeff * pow(in, e_coeff);
+    if(controlExponent(e_coeff) && in < 0) {
+        cout << "The function has an exponenent between -1 and 1, so x<0 are not allowed" << endl << flush;
+        exit(-1);
+    }
+    else {
+        return k_coeff * pow(in, e_coeff);
+    }
 }
 
 /// @brief Error message function

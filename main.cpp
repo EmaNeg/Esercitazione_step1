@@ -8,6 +8,7 @@
 
 #include "CPolynomial.h"
 #include "CPower.h"
+#include "CLogarithmic.h"
 
 using namespace std;
 
@@ -49,7 +50,7 @@ int main(void) {
     cout << "Valore di p1 a x=2: " << p1.GetValue(2) << endl;
     cout << "Valore di p3 a x=5: " << p3.GetValue(5) << endl;
 
-    Power P1(2, 3);
+    Power P1(2, -3);
     cout << "P1: " << endl;
     P1.Dump();
 
@@ -80,6 +81,38 @@ int main(void) {
 
     cout << "Valore di P1 a x=7: " << P1.GetValue(7) << endl;
     cout << "Valore di P3 a x=10: " << P3.GetValue(10) << endl;
+
+    Logarithmic L1(50, 2);
+    cout << "L1: " << endl;
+    L1.Dump();
+
+    Logarithmic L2(L1);
+    cout << "L2: " << endl;
+    L2.Dump();
+
+    Logarithmic L3;
+    L3 = L1;
+    cout << "L3: " << endl;
+    L3.Dump();
+
+    if (L1 == L2) {
+        cout << "L1 == L2" << endl;
+    } else {
+        cout << "L1 != L2" << endl;
+    }
+
+    L3.SetLogarithmic(10000, 10);
+    cout << "L3: " << endl;
+    L3.Dump();
+
+    if (L1 == L3) {
+        cout << "L1 == L3" << endl;
+    } else {
+        cout << "L1 != L3" << endl;
+    }
+
+    cout << "Valore di L1 a x=40: " << L1.GetValue(40) << endl;
+    cout << "Valore di L3 a x=100: " << L3.GetValue(100) << endl;
 
     cout << endl;
     cout << "-------- DECONSTRUCTORs --------"<< endl;
