@@ -1,5 +1,5 @@
 /*! @file CPolynomial.h
-	@brief A class for polynomial functions 
+	@brief A class for Polynomial functions 
 	@author Emanuele Negrino and Carlo Toscano
 */ 
 

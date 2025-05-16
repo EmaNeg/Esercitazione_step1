@@ -1,5 +1,5 @@
 /*! @file CPower.h
-    @brief A class for power functions 
+    @brief A class for Power functions 
     @author Emanuele Negrino and Carlo Toscano
 */ 
 
@@ -18,7 +18,6 @@ using namespace std;
     @brief A class for power functions 
     @details This class implements a power function of the form: k*x^e.
 */
-
 class Power : public Function {
 
 private:
