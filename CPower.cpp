@@ -58,9 +58,9 @@ bool Power::operator==(const Power& p) {
 /// @return False if exponent is between -1 and 1, otherways true
 bool controlExponent(double e) {
     if(e < 1 && e > -1){
-        return false;
+        return true;
     }
-    return true;
+    return false;
 }
 
 /// @brief Sets the coefficients of the power function
